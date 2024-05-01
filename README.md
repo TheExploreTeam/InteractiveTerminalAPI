@@ -5,6 +5,7 @@ An API which focuses on making terminal applications where the player can intera
 - Classes/interfaces where you can use to build your own terminal application
 	- You can also make your own custom classes that derive from these to be used as replacements
 - Executes the application associated with a given text prompt entered in the terminal (if registered).
+- Key bindings are set by this mod to interact with said applications. Later, I can make it possible to register your own control bindings.
 
 # Important notices
 - The mod itself doesn't do anything. It's just an API which other mod developers may wish to use for their own usages.
