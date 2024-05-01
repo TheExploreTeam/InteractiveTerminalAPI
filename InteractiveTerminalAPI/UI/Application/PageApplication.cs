@@ -15,7 +15,7 @@ namespace InteractiveTerminalAPI.UI.Application
         protected PageCursorElement currentPage;
         protected override string GetApplicationText()
         {
-            return currentScreen == currentPage.GetCurrentScreen() ? currentPage.GetText(LGUConstants.AVAILABLE_CHARACTERS_PER_LINE) : currentScreen.GetText(LGUConstants.AVAILABLE_CHARACTERS_PER_LINE);
+            return currentScreen == currentPage.GetCurrentScreen() ? currentPage.GetText(APIConstants.AVAILABLE_CHARACTERS_PER_LINE) : currentScreen.GetText(APIConstants.AVAILABLE_CHARACTERS_PER_LINE);
         }
         protected int GetEntriesPerPage<T>(T[] entries)
         {

@@ -71,7 +71,7 @@ namespace InteractiveTerminalAPI.UI
                 terminalReference.screenText.DeactivateInputField();
                 terminalReference.screenText.interactable = false;
                 previousCaretColor = terminalReference.screenText.caretColor;
-                terminalReference.screenText.caretColor = LGUConstants.Invisible;
+                terminalReference.screenText.caretColor = APIConstants.Invisible;
             }
         }
         public static bool InteractiveTerminalBeingUsed()

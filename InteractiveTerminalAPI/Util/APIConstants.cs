@@ -2,7 +2,7 @@
 
 namespace InteractiveTerminalAPI.Misc.Util
 {
-    internal static class LGUConstants
+    internal static class APIConstants
     {
         #region General
 
@@ -44,39 +44,6 @@ namespace InteractiveTerminalAPI.Misc.Util
 
         #region LGU Store Interactive UI
 
-        #region Main Screen
-
-        internal const string MAIN_SCREEN_TITLE = "Lategame Upgrades";
-        internal const string MAIN_SCREEN_TOP_TEXT = "Select an upgrade to purchase:";
-
-        internal const string MAIN_WEATHER_PROBE_SCREEN_TITLE = "Weather Probe";
-        internal const string MAIN_WEATHER_PROBE_TOP_TEXT = "Select a moon you wish to alter the weather of:";
-
-        #endregion
-
-        #region Weather Display
-
-        internal const string SELECT_WEATHER_FORMAT = "Select the available weathers for {0}:";
-        internal const string CURRENT_WEATHER_FORMAT = "Current weather: {0}";
-
-        internal const string CONFIRM_WEATHER_FORMAT = "Do you wish to change {0}'s weather to {1} for {2} credits?";
-        internal const string CONFIRM_RANDOM_WEATHER_FORMAT = "Do you wish to randomize {0}'s weather for {1} credits?";
-        internal const string CONFIRM_CLEAR_WEATHER_FORMAT = "Do you wish to clear {0}'s weather for {1} credits?";
-
-        internal const string WEATHER_CHANGED_FORMAT = "{0}'s weather has changed to {1}. Thank you for your purchase.";
-        internal const string NOT_ENOUGH_CREDITS_PROBE = "You do not have enough credits to purchase a randomized weather probe.";
-        internal const string NOT_ENOUGH_CREDITS_SPECIFIED_PROBE = "You do not have enough credits to purchase a specified weather probe.";
-
-        #endregion
-
-        #region Upgrade Display
-
-        internal const string NOT_ENOUGH_CREDITS = "You do not have enough credits to purchase this upgrade.";
-        internal const string REACHED_MAX_LEVEL = "You have reached the maximum level of this upgrade.";
-        internal const string PURCHASE_UPGRADE_FORMAT = "Do you wish to purchase this upgrade for {0} credits?";
-
-        #endregion
-
         #region Cursor Display
         internal const char CURSOR = '>';
 
@@ -91,6 +58,7 @@ namespace InteractiveTerminalAPI.Misc.Util
         #endregion
 
         #region Screen Display
+
         internal const int AVAILABLE_CHARACTERS_PER_LINE = 51;
         internal const char TOP_LEFT_CORNER = '╭';
         internal const char TOP_RIGHT_CORNER = '╮';

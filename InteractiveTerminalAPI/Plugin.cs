@@ -21,7 +21,7 @@ namespace InteractiveTerminalAPI
 
         void Awake()
         {
-            Config = new PluginConfig(base.Config);
+            //Config = new PluginConfig(base.Config);
 
             InputUtils_Compat.Init();
             PatchMainVersion();

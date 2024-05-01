@@ -12,7 +12,7 @@ namespace InteractiveTerminalAPI.UI.Application
         protected CursorMenu currentCursorMenu;
         protected override string GetApplicationText()
         {
-            return currentScreen.GetText(LGUConstants.AVAILABLE_CHARACTERS_PER_LINE);
+            return currentScreen.GetText(APIConstants.AVAILABLE_CHARACTERS_PER_LINE);
         }
         protected override void AddInputBindings()
         {
@@ -68,8 +68,8 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             CursorElement[] cursorElements =
                 [
-                    CursorElement.Create(name: LGUConstants.CONFIRM_PROMPT, action: confirmAction),
-                    CursorElement.Create(name: LGUConstants.CANCEL_PROMPT, action: declineAction),
+                    CursorElement.Create(name: APIConstants.CONFIRM_PROMPT, action: confirmAction),
+                    CursorElement.Create(name: APIConstants.CANCEL_PROMPT, action: declineAction),
                 ];
             CursorMenu cursorMenu = CursorMenu.Create(elements: cursorElements);
 
@@ -86,7 +86,7 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         protected void ErrorMessage(string title, Action backAction, string error)
         {
-            CursorElement[] cursorElements = [CursorElement.Create(name: LGUConstants.GO_BACK_PROMPT, action: backAction)];
+            CursorElement[] cursorElements = [CursorElement.Create(name: APIConstants.GO_BACK_PROMPT, action: backAction)];
             CursorMenu cursorMenu = CursorMenu.Create(startingCursorIndex: 0, elements: cursorElements);
             ITextElement[] elements =
                 [
@@ -101,7 +101,7 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             CursorElement[] cursorElements =
                 [
-                    CursorElement.Create(name: LGUConstants.GO_BACK_PROMPT, action: backAction)
+                    CursorElement.Create(name: APIConstants.GO_BACK_PROMPT, action: backAction)
                 ];
             CursorMenu cursorMenu = CursorMenu.Create(startingCursorIndex: 0, elements: cursorElements);
             ITextElement[] elements =
