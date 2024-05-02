@@ -4,41 +4,9 @@ using InteractiveTerminalAPI.Util;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {
-    public class CursorMenu : ITextElement
+    public class CursorMenu : BaseCursorMenu<CursorElement>
     {
-        public char cursorCharacter = '>';
-        public int cursorIndex;
-        public CursorElement[] elements;
-
-        public void Execute()
-        {
-            elements[cursorIndex].ExecuteAction();
-        }
-        public void Forward()
-        {
-            cursorIndex = (cursorIndex + 1) % elements.Length;
-            while (elements[cursorIndex] == null)
-            {
-                cursorIndex = (cursorIndex + 1) % elements.Length;
-            }
-        }
-        public void Backward()
-        {
-            cursorIndex--;
-            if (cursorIndex < 0) cursorIndex = elements.Length - 1;
-            while (elements[cursorIndex] == null)
-            {
-                cursorIndex--;
-                if (cursorIndex < 0) cursorIndex = elements.Length - 1;
-            }
-        }
-
-        public void ResetCursor()
-        {
-            cursorIndex = 0;
-        }
-
-        public string GetText(int availableLength)
+        public override string GetText(int availableLength)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < elements.Length; i++)

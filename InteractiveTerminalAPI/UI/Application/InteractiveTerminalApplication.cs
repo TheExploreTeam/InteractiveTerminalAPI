@@ -1,69 +1,12 @@
-﻿using InteractiveTerminalAPI.Input;
-using InteractiveTerminalAPI.Misc.Util;
+﻿using InteractiveTerminalAPI.Misc.Util;
 using InteractiveTerminalAPI.UI.Cursor;
 using InteractiveTerminalAPI.UI.Screen;
 using System;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application
 {
-    public abstract class InteractiveTerminalApplication : TerminalApplication
+    public abstract class InteractiveTerminalApplication : BaseInteractiveApplication<CursorMenu, CursorElement>
     {
-        protected CursorMenu currentCursorMenu;
-        protected override string GetApplicationText()
-        {
-            return currentScreen.GetText(APIConstants.AVAILABLE_CHARACTERS_PER_LINE);
-        }
-        protected override void AddInputBindings()
-        {
-            base.AddInputBindings();
-            Keybinds.cursorUpAction.performed += OnUpgradeStoreCursorUp;
-            Keybinds.cursorDownAction.performed += OnUpgradeStoreCursorDown;
-            Keybinds.storeConfirmAction.performed += OnUpgradeStoreConfirm;
-        }
-        protected override void RemoveInputBindings()
-        {
-            base.RemoveInputBindings();
-            Keybinds.cursorUpAction.performed -= OnUpgradeStoreCursorUp;
-            Keybinds.cursorDownAction.performed -= OnUpgradeStoreCursorDown;
-            Keybinds.storeConfirmAction.performed -= OnUpgradeStoreConfirm;
-        }
-        protected override Action PreviousScreen()
-        {
-            return () => SwitchScreen(currentScreen, currentCursorMenu, previous: true);
-        }
-        internal virtual void MoveCursorUp()
-        {
-            currentCursorMenu.Backward();
-        }
-        internal virtual void MoveCursorDown()
-        {
-            currentCursorMenu.Forward();
-        }
-        public virtual void Submit()
-        {
-            currentCursorMenu.Execute();
-        }
-        internal void OnUpgradeStoreConfirm(CallbackContext context)
-        {
-            Submit();
-        }
-        internal void OnUpgradeStoreCursorUp(CallbackContext context)
-        {
-            MoveCursorUp();
-        }
-        internal void OnUpgradeStoreCursorDown(CallbackContext context)
-        {
-            MoveCursorDown();
-        }
-
-        protected virtual void SwitchScreen(IScreen screen, CursorMenu cursorMenu, bool previous)
-        {
-            currentScreen = screen;
-            currentCursorMenu = cursorMenu;
-            if (!previous) cursorMenu.cursorIndex = 0;
-        }
-
         protected void Confirm(string title, string description, Action confirmAction, Action declineAction, string additionalMessage = "")
         {
             CursorElement[] cursorElements =

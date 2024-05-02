@@ -7,9 +7,8 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application
 {
-    internal class InteractiveCounterApplication : InteractiveTerminalApplication
+    internal class InteractiveCounterApplication : BaseInteractiveApplication<CursorCounterMenu, CursorCounterElement>
     {
-        protected new CursorCounterMenu currentCursorMenu;
         protected override void AddInputBindings()
         {
             base.AddInputBindings();
@@ -38,26 +37,18 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             DecrementSelectedCounter();
         }
-        internal override void MoveCursorUp()
-        {
-            currentCursorMenu.Backward();
-        }
-        internal override void MoveCursorDown()
-        {
-            currentCursorMenu.Forward();
-        }
-        public override void Submit()
-        {
-            currentCursorMenu.Execute();
-        }
 
         public override void Initialization()
         {
-            CursorCounterElement[] cursorCounterElements = new CursorCounterElement[10];
+            CursorOutputElement<string>[] cursorCounterElements = new CursorOutputElement<string>[10];
+            Func<int, string>[] functions = new Func<int, string>[10];
             for(int i = 0; i < cursorCounterElements.Length; i++)
-                cursorCounterElements[i] = CursorOutputElement<int>.Create(name: "Yippie" + i, counter: 0, func: (x) => x*10);
+            {
+                functions[i] = (x) => $"More Yippies{x}!";
+                cursorCounterElements[i] = CursorOutputElement<string>.Create(name: "Yippie" + i, counter: 0, func: functions[i]);
+            }
             CursorCounterMenu cursorMenu = CursorCounterMenu.Create(0, '>', cursorCounterElements);
-            IScreen screen = BoxedScreen.Create("Yippie", [cursorMenu]);
+            IScreen screen = BoxedOutputScreen<string, string>.Create("Yippie", [cursorMenu], input: () => cursorCounterElements[0].ApplyFunction() + cursorCounterElements[1].ApplyFunction(), output: (x) => x);
 
             currentCursorMenu = cursorMenu;
             currentScreen = screen;

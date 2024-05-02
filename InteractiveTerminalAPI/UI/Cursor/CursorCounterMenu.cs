@@ -6,40 +6,8 @@ using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {
-    internal class CursorCounterMenu : ITextElement
+    internal class CursorCounterMenu : BaseCursorMenu<CursorCounterElement>
     {
-        public char cursorCharacter = '>';
-        public int cursorIndex;
-        public CursorCounterElement[] elements;
-
-        public void Execute()
-        {
-            elements[cursorIndex].ExecuteAction();
-        }
-        public void Forward()
-        {
-            cursorIndex = (cursorIndex + 1) % elements.Length;
-            while (elements[cursorIndex] == null)
-            {
-                cursorIndex = (cursorIndex + 1) % elements.Length;
-            }
-        }
-        public void Backward()
-        {
-            cursorIndex--;
-            if (cursorIndex < 0) cursorIndex = elements.Length - 1;
-            while (elements[cursorIndex] == null)
-            {
-                cursorIndex--;
-                if (cursorIndex < 0) cursorIndex = elements.Length - 1;
-            }
-        }
-
-        public void ResetCursor()
-        {
-            cursorIndex = 0;
-        }
-
         public void IncrementCounter()
         {
             elements[cursorIndex].IncrementCounter();
@@ -49,7 +17,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
             elements[cursorIndex].DecrementCounter();
         }
 
-        public string GetText(int availableLength)
+        public override string GetText(int availableLength)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < elements.Length; i++)
@@ -64,7 +32,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
             return sb.ToString();
         }
 
-        public static CursorCounterMenu Create(int startingCursorIndex = 0, char cursorCharacter = '>', CursorCounterElement[] elements = default)
+        public static CursorCounterMenu Create<T>(int startingCursorIndex = 0, char cursorCharacter = '>', T[] elements = default) where T : CursorCounterElement
         {
             return new CursorCounterMenu()
             {

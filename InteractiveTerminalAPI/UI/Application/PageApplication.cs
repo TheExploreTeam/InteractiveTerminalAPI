@@ -44,13 +44,13 @@ namespace InteractiveTerminalAPI.UI.Application
             base.SwitchScreen(screen, cursorMenu, previous);
             if (screen == currentPage.GetCurrentScreen())
             {
-                Keybinds.pageUpAction.performed += OnUpgradeStorePageUp;
-                Keybinds.pageDownAction.performed += OnUpgradeStorePageDown;
+                Keybinds.pageUpAction.performed += OnApplicationPageUp;
+                Keybinds.pageDownAction.performed += OnApplicationPageDown;
             }
             else
             {
-                Keybinds.pageUpAction.performed -= OnUpgradeStorePageUp;
-                Keybinds.pageDownAction.performed -= OnUpgradeStorePageDown;
+                Keybinds.pageUpAction.performed -= OnApplicationPageUp;
+                Keybinds.pageDownAction.performed -= OnApplicationPageDown;
             }
         }
         public void ChangeScreenForward()
@@ -66,14 +66,14 @@ namespace InteractiveTerminalAPI.UI.Application
         protected override void AddInputBindings()
         {
             base.AddInputBindings();
-            Keybinds.pageUpAction.performed += OnUpgradeStorePageUp;
-            Keybinds.pageDownAction.performed += OnUpgradeStorePageDown;
+            Keybinds.pageUpAction.performed += OnApplicationPageUp;
+            Keybinds.pageDownAction.performed += OnApplicationPageDown;
         }
         protected override void RemoveInputBindings()
         {
             base.RemoveInputBindings();
-            Keybinds.pageUpAction.performed -= OnUpgradeStorePageUp;
-            Keybinds.pageDownAction.performed -= OnUpgradeStorePageDown;
+            Keybinds.pageUpAction.performed -= OnApplicationPageUp;
+            Keybinds.pageDownAction.performed -= OnApplicationPageDown;
         }
 
         protected (T[][], CursorMenu[], IScreen[]) GetPageEntries<T>(T[] entries)
@@ -96,11 +96,11 @@ namespace InteractiveTerminalAPI.UI.Application
 
             return (pages, cursorMenus, screens);
         }
-        internal void OnUpgradeStorePageUp(CallbackContext context)
+        internal void OnApplicationPageUp(CallbackContext context)
         {
             ChangeScreenForward();
         }
-        internal void OnUpgradeStorePageDown(CallbackContext context)
+        internal void OnApplicationPageDown(CallbackContext context)
         {
             ChangeScreenBackward();
         }

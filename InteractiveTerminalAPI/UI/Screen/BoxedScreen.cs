@@ -12,7 +12,7 @@ namespace InteractiveTerminalAPI.UI.Screen
     {
         public string Title;
         public ITextElement[] elements;
-        public string GetText(int availableLength)
+        public virtual string GetText(int availableLength)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine().AppendLine();
