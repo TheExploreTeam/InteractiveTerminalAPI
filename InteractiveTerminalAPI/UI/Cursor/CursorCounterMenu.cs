@@ -1,14 +1,16 @@
-﻿using System.Text;
-using InteractiveTerminalAPI.Misc.Util;
+﻿using InteractiveTerminalAPI.Misc.Util;
 using InteractiveTerminalAPI.Util;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {
-    public class CursorMenu : ITextElement
+    internal class CursorCounterMenu : ITextElement
     {
         public char cursorCharacter = '>';
         public int cursorIndex;
-        public CursorElement[] elements;
+        public CursorCounterElement[] elements;
 
         public void Execute()
         {
@@ -38,12 +40,21 @@ namespace InteractiveTerminalAPI.UI.Cursor
             cursorIndex = 0;
         }
 
+        public void IncrementCounter()
+        {
+            elements[cursorIndex].IncrementCounter();
+        }
+        public void DecrementCounter()
+        {
+            elements[cursorIndex].DecrementCounter();
+        }
+
         public string GetText(int availableLength)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < elements.Length; i++)
             {
-                CursorElement element = elements[i];
+                CursorCounterElement element = elements[i];
                 if (element == null) continue;
                 if (i == cursorIndex) sb.Append(cursorCharacter).Append(APIConstants.WHITE_SPACE); else sb.Append(APIConstants.WHITE_SPACE).Append(APIConstants.WHITE_SPACE);
                 string text = element.GetText(availableLength - 2);
@@ -53,9 +64,9 @@ namespace InteractiveTerminalAPI.UI.Cursor
             return sb.ToString();
         }
 
-        public static CursorMenu Create(int startingCursorIndex = 0, char cursorCharacter = '>', CursorElement[] elements = default)
+        public static CursorCounterMenu Create(int startingCursorIndex = 0, char cursorCharacter = '>', CursorCounterElement[] elements = default)
         {
-            return new CursorMenu()
+            return new CursorCounterMenu()
             {
                 cursorIndex = startingCursorIndex,
                 cursorCharacter = cursorCharacter,

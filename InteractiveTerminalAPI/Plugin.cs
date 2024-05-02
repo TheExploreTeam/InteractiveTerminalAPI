@@ -7,6 +7,8 @@ using InteractiveTerminalAPI.Compat;
 using InteractiveTerminalAPI.Patches.TerminalComponents;
 using InteractiveTerminalAPI.Misc;
 using InteractiveTerminalAPI.Input;
+using InteractiveTerminalAPI.UI;
+using InteractiveTerminalAPI.UI.Application;
 
 namespace InteractiveTerminalAPI
 {
@@ -25,6 +27,8 @@ namespace InteractiveTerminalAPI
 
             InputUtils_Compat.Init();
             PatchMainVersion();
+
+            InteractiveTerminalManager.RegisterApplication<InteractiveCounterApplication>("counter");
 
             mls.LogInfo($"{Metadata.NAME} {Metadata.VERSION} has been loaded successfully.");
         }

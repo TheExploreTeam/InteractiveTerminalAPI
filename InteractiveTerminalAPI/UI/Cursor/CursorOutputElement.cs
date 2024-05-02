@@ -1,0 +1,36 @@
+﻿using InteractiveTerminalAPI.Misc.Util;
+using System;
+using System.Text;
+
+namespace InteractiveTerminalAPI.UI.Cursor
+{
+    internal class CursorOutputElement<T> : CursorCounterElement
+    {
+        public Func<int, T> Func { get; set; }
+
+        public T ApplyFunction()
+        {
+            return Func(Counter);
+        }
+        public override string GetText(int availableLength)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(base.GetText(availableLength));
+            sb.Append(new string(APIConstants.WHITE_SPACE, 10));
+            sb.Append(ApplyFunction());
+            return sb.ToString();
+        }
+        public static new CursorOutputElement<T> Create(string name = "", string description = "", Action action = default, int counter = 0, Func<int, T> func = default)
+        {
+            return new CursorOutputElement<T>()
+            {
+                Name = name,
+                Description = description,
+                Action = action,
+                Counter = counter,
+                Func = func
+            };
+        }
+
+    }
+}

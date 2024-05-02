@@ -32,15 +32,15 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             return () => SwitchScreen(currentScreen, currentCursorMenu, previous: true);
         }
-        internal void MoveCursorUp()
+        internal virtual void MoveCursorUp()
         {
             currentCursorMenu.Backward();
         }
-        internal void MoveCursorDown()
+        internal virtual void MoveCursorDown()
         {
             currentCursorMenu.Forward();
         }
-        public void Submit()
+        public virtual void Submit()
         {
             currentCursorMenu.Execute();
         }

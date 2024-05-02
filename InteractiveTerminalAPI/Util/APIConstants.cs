@@ -76,6 +76,9 @@ namespace InteractiveTerminalAPI.Misc.Util
         internal const char VERTICAL_TITLE_LINE = '║';
         internal const char HORIZONTAL_TITLE_LINE = '═';
 
+        internal const char LEFT_ARROW = '←';
+        internal const char RIGHT_ARROW = '→';
+
         #region Page Display
         internal const int START_PAGE_COUNTER = 30;
         #endregion

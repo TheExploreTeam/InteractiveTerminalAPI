@@ -18,6 +18,11 @@ namespace InteractiveTerminalAPI.UI.Cursor
             return sb.ToString();
         }
 
+        public void ExecuteAction()
+        {
+            if (Action != null) Action();
+        }
+
         public static CursorElement Create(string name = "", string description = "", Action action = default)
         {
             return new CursorElement()
