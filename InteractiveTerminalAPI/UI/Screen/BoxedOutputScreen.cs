@@ -1,7 +1,6 @@
 ﻿using InteractiveTerminalAPI.Misc.Util;
 using InteractiveTerminalAPI.Util;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Screen
@@ -47,25 +46,26 @@ namespace InteractiveTerminalAPI.UI.Screen
                 sb.Append(Tools.WrapText(elements[i].GetText(availableLength - 4), availableLength, leftPadding: "│ ", rightPadding: " │"));
             }
             string outputString = GetOutput().ToString();
+            int rightPos = availableLength - outputString.Length - 6;
             sb.Append(APIConstants.VERTICAL_LINE)
-                .Append(new string(APIConstants.WHITE_SPACE, availableLength - outputString.Length - 10))
+                .Append(new string(APIConstants.WHITE_SPACE, rightPos - 3))
                 .Append(APIConstants.TOP_LEFT_TITLE_CORNER);
                 sb.Append(new string(APIConstants.HORIZONTAL_TITLE_LINE, outputString.Length + 2))
                 .Append(APIConstants.TOP_RIGHT_TITLE_CORNER)
-                .Append(new string(APIConstants.WHITE_SPACE, availableLength - outputString.Length - 20))
+                .Append(new string(APIConstants.WHITE_SPACE, 3))
                 .Append(APIConstants.VERTICAL_LINE)
                 .Append('\n');
             sb.Append(APIConstants.BOTTOM_LEFT_CORNER)
-                .Append(new string(APIConstants.HORIZONTAL_LINE, availableLength - outputString.Length - 10))
+                .Append(new string(APIConstants.HORIZONTAL_LINE, rightPos - 3))
                 .Append(APIConstants.CONNECTING_TITLE_LEFT)
                 .Append(APIConstants.WHITE_SPACE)
                 .Append(outputString)
                 .Append(APIConstants.WHITE_SPACE)
                 .Append(APIConstants.CONNECTING_TITLE_RIGHT)
-                .Append(new string(APIConstants.HORIZONTAL_LINE, availableLength - outputString.Length - 20))
+                .Append(new string(APIConstants.HORIZONTAL_LINE, 3))
                 .Append(APIConstants.BOTTOM_RIGHT_CORNER)
                 .Append('\n');
-            sb.Append(new string(APIConstants.WHITE_SPACE, availableLength - outputString.Length - 9))
+            sb.Append(new string(APIConstants.WHITE_SPACE, rightPos - 2))
                 .Append(APIConstants.BOTTOM_LEFT_TITLE_CORNER)
                 .Append(new string(APIConstants.HORIZONTAL_TITLE_LINE, outputString.Length + 2))
                 .Append(APIConstants.BOTTOM_RIGHT_TITLE_CORNER)

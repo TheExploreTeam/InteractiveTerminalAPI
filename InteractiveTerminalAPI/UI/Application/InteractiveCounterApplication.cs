@@ -7,7 +7,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application
 {
-    internal class InteractiveCounterApplication : BaseInteractiveApplication<CursorCounterMenu, CursorCounterElement>
+    internal abstract class InteractiveCounterApplication : BaseInteractiveApplication<CursorCounterMenu, CursorCounterElement>
     {
         protected override void AddInputBindings()
         {
@@ -37,7 +37,8 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             DecrementSelectedCounter();
         }
-
+        /// Example of initializing this application
+        /*
         public override void Initialization()
         {
             CursorOutputElement<string>[] cursorCounterElements = new CursorOutputElement<string>[10];
@@ -53,5 +54,6 @@ namespace InteractiveTerminalAPI.UI.Application
             currentCursorMenu = cursorMenu;
             currentScreen = screen;
         }
+        */
     }
 }

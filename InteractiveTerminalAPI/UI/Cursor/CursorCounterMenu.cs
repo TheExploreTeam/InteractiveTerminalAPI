@@ -6,7 +6,7 @@ using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {
-    internal class CursorCounterMenu : BaseCursorMenu<CursorCounterElement>
+    public class CursorCounterMenu : BaseCursorMenu<CursorCounterElement>
     {
         public void IncrementCounter()
         {
