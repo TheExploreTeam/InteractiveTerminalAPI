@@ -36,6 +36,10 @@ namespace InteractiveTerminalAPI.Compat
         /// Input binding used to submit current prompt in the LGU interface action
         /// </summary>
         public static InputAction LguStoreConfirmKey => IngameKeybinds.Instance.LguStoreConfirmKey;
+        /// <summary>
+        /// Input binding used to change the current application's sorting function
+        /// </summary>
+        public static InputAction ChangeApplicationSortingKey => IngameKeybinds.Instance.ApplicationChangeSorting;
 
         /// <summary>
         /// Initialization of the compatibility class

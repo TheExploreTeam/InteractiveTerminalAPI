@@ -48,6 +48,11 @@ namespace InteractiveTerminalAPI.Input
         /// </summary>
         public static InputAction storeConfirmAction;
 
+        /// <summary>
+        /// Input binding used to change the current cursor menu's sorting
+        /// </summary>
+        public static InputAction changeSortingAction;
+
         public static PlayerControllerB localPlayerController => StartOfRound.Instance?.localPlayerController;
 
         /// <summary>
@@ -65,6 +70,7 @@ namespace InteractiveTerminalAPI.Input
             pageUpAction = InputUtils_Compat.PageUpKey;
             pageDownAction = InputUtils_Compat.PageDownKey;
             storeConfirmAction = InputUtils_Compat.LguStoreConfirmKey;
+            changeSortingAction = InputUtils_Compat.ChangeApplicationSortingKey;
         }
     }
 }

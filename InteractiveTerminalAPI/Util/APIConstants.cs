@@ -15,6 +15,7 @@ namespace InteractiveTerminalAPI.Misc.Util
         internal const string HEXADECIMAL_RED = "#FF0000";
         internal const string HEXADECIMAL_WHITE = "#FFFFFF";
         internal const string HEXADECIMAL_GREEN = "#00FF00";
+        internal const string HEXADECIMAL_GREY = "#666666";
 
         #endregion
 
@@ -40,6 +41,9 @@ namespace InteractiveTerminalAPI.Misc.Util
         internal const string SUBMIT_PROMPT_KEYBIND_NAME = "Submit Prompt in the current application";
         internal const string SUBMIT_PROMPT_DEFAULT_KEYBIND = "<Keyboard>/enter";
 
+        internal const string CHANGE_SORTING_KEYBIND_NAME = "Change sorting in the current application";
+        internal const string CHANGE_SORTING_DEFAULT_KEYBIND = "<Keyboard>/f";
+
         #endregion
 
         #region LGU Store Interactive UI
@@ -48,8 +52,12 @@ namespace InteractiveTerminalAPI.Misc.Util
         internal const char CURSOR = '>';
 
         internal const string SELECTED_CURSOR_ELEMENT_FORMAT = "<mark={0}><color={1}>{2}</color></mark>";
-        internal const string DEFAULT_BACKGROUND_SELECTED_COLOR = HEXADECIMAL_GREEN + "33";
+        internal const string COLOR_INITIAL_FORMAT = "<color={0}>";
+        internal const string COLOR_FINAL_FORMAT = "</color>";
+        internal const string DEFAULT_BACKGROUND_SELECTED_COLOR = HEXADECIMAL_GREEN + "66";
+        internal const string INACTIVE_BACKGROUND_SELECTED_COLOR = HEXADECIMAL_GREY + "33";
         internal const string DEFAULT_TEXT_SELECTED_COLOR = HEXADECIMAL_WHITE + "FF";
+        internal const string DEFAULT_DEACTIVATED_TEXT_COLOUR = HEXADECIMAL_GREY + "55";
 
         internal const string GO_BACK_PROMPT = "Back";
 

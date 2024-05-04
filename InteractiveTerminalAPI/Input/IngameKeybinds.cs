@@ -54,5 +54,11 @@ namespace InteractiveTerminalAPI.Input
         [InputAction(APIConstants.SUBMIT_PROMPT_DEFAULT_KEYBIND, Name = APIConstants.SUBMIT_PROMPT_KEYBIND_NAME)]
         public InputAction LguStoreConfirmKey { get; set; }
 
+        /// <summary>
+        /// Input binding used to submit current prompt in the LGU interface action
+        /// </summary>
+        [InputAction(APIConstants.CHANGE_SORTING_DEFAULT_KEYBIND, Name = APIConstants.CHANGE_SORTING_KEYBIND_NAME)]
+        public InputAction ApplicationChangeSorting { get; set; }
+
     }
 }

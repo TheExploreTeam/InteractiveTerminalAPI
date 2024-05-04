@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {
@@ -8,17 +6,28 @@ namespace InteractiveTerminalAPI.UI.Cursor
     {
         public char cursorCharacter = '>';
         public int cursorIndex;
+        public int sortingIndex;
         public T[] elements;
+        public Func<T,T, int>[] SortingFunctions { get; set; }
 
         public void Execute()
         {
             elements[cursorIndex].ExecuteAction();
         }
+        public Func<T, T, int> GetCurrentSorting()
+        {
+            return SortingFunctions[sortingIndex];
+        }
+        public void ChangeSorting()
+        {
+            sortingIndex = (sortingIndex + 1) % SortingFunctions.Length;
+            Array.Sort(elements, (x,y) => SortingFunctions[sortingIndex](x,y));
+        }
 
         public void Forward()
         {
             cursorIndex = (cursorIndex + 1) % elements.Length;
-            while (elements[cursorIndex] == null)
+            while (elements[cursorIndex] == null || (!elements[cursorIndex].Active(elements[cursorIndex]) && !elements[cursorIndex].SelectInactive))
             {
                 cursorIndex = (cursorIndex + 1) % elements.Length;
             }
@@ -28,7 +37,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
         {
             cursorIndex--;
             if (cursorIndex < 0) cursorIndex = elements.Length - 1;
-            while (elements[cursorIndex] == null)
+            while (elements[cursorIndex] == null || (!elements[cursorIndex].Active(elements[cursorIndex]) && !elements[cursorIndex].SelectInactive))
             {
                 cursorIndex--;
                 if (cursorIndex < 0) cursorIndex = elements.Length - 1;

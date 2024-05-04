@@ -30,6 +30,10 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             return Mathf.CeilToInt(entries.Length / (float)GetEntriesPerPage(entries));
         }
+        protected override void ChangeSorting()
+        {
+            currentPage.ChangeSorting();
+        }
         protected void ResetScreen()
         {
             SwitchScreen(initialPage, true);

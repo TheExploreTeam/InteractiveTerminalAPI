@@ -24,6 +24,7 @@ namespace InteractiveTerminalAPI.UI.Application
         protected override void AddInputBindings()
         {
             base.AddInputBindings();
+            Keybinds.changeSortingAction.performed += OnApplicationChangeSorting;
             Keybinds.cursorUpAction.performed += OnApplicationCursorUp;
             Keybinds.cursorDownAction.performed += OnApplicationCursorDown;
             Keybinds.storeConfirmAction.performed += OnApplicationConfirm;
@@ -31,6 +32,7 @@ namespace InteractiveTerminalAPI.UI.Application
         protected override void RemoveInputBindings()
         {
             base.RemoveInputBindings();
+            Keybinds.changeSortingAction.performed -= OnApplicationChangeSorting;
             Keybinds.cursorUpAction.performed -= OnApplicationCursorUp;
             Keybinds.cursorDownAction.performed -= OnApplicationCursorDown;
             Keybinds.storeConfirmAction.performed -= OnApplicationConfirm;
@@ -43,9 +45,17 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             MoveCursorUp();
         }
+        internal void OnApplicationChangeSorting(CallbackContext context)
+        {
+            ChangeSorting();
+        }
         internal void OnApplicationCursorDown(CallbackContext context)
         {
             MoveCursorDown();
+        }
+        protected virtual void ChangeSorting()
+        {
+            currentCursorMenu.ChangeSorting();
         }
         public void MoveCursorUp()
         {
