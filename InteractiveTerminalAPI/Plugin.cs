@@ -28,8 +28,6 @@ namespace InteractiveTerminalAPI
             InputUtils_Compat.Init();
             PatchMainVersion();
 
-            InteractiveTerminalManager.RegisterApplication<InteractiveCounterApplication>("counter");
-
             mls.LogInfo($"{Metadata.NAME} {Metadata.VERSION} has been loaded successfully.");
         }
         internal static void PatchMainVersion()
