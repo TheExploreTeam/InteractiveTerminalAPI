@@ -4,7 +4,7 @@ using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {
-    internal class CursorOutputElement<T> : CursorCounterElement
+    public class CursorOutputElement<T> : CursorCounterElement
     {
         public Func<int, T> Func { get; set; }
 

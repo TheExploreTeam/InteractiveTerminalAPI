@@ -5,9 +5,9 @@ using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Screen
 {
-    internal class BoxedOutputScreen<K,V> : BoxedScreen
+    public class BoxedOutputScreen<K,V> : BoxedScreen
     {
-        public Func<K> Input { get; private set; }
+        public Func<K> Input { get; set; }
         public Func<K,V> Output { get; set; }
 
         public V GetOutput()

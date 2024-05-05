@@ -17,7 +17,7 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             return currentScreen == currentPage.GetCurrentScreen() ? currentPage.GetText(APIConstants.AVAILABLE_CHARACTERS_PER_LINE) : currentScreen.GetText(APIConstants.AVAILABLE_CHARACTERS_PER_LINE);
         }
-        protected int GetEntriesPerPage<T>(T[] entries)
+        protected virtual int GetEntriesPerPage<T>(T[] entries)
         {
             return Mathf.CeilToInt(entries.Length / 2f);
         }
@@ -26,7 +26,7 @@ namespace InteractiveTerminalAPI.UI.Application
             return () => ResetScreen();
         }
 
-        protected int GetAmountPages<T>(T[] entries)
+        protected virtual int GetAmountPages<T>(T[] entries)
         {
             return Mathf.CeilToInt(entries.Length / (float)GetEntriesPerPage(entries));
         }
