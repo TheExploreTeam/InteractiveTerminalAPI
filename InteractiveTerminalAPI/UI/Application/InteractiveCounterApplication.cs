@@ -6,7 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application
 {
-    internal class InteractiveCounterApplication : BaseInteractiveApplication<CursorCounterMenu, CursorCounterElement>
+    public class InteractiveCounterApplication : BaseInteractiveApplication<CursorCounterMenu, CursorCounterElement>
     {
         protected override void AddInputBindings()
         {
