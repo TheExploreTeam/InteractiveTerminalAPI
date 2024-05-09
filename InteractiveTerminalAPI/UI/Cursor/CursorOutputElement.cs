@@ -22,7 +22,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
             if (!Active(this)) sb.Append(APIConstants.COLOR_FINAL_FORMAT);
             return sb.ToString();
         }
-        public static new CursorOutputElement<T> Create(string name = "", string description = "", Action action = default, int counter = 0, Func<int, T> func = default, Func<CursorElement, bool> active = null, bool selectInactive = true)
+        public static new CursorOutputElement<T> Create(string name = "", string description = "", Action action = default, int counter = 0, Func<int, T> func = default, Func<CursorElement, bool> active = null, bool selectInactive = true, bool showCounter = true)
         {
             return new CursorOutputElement<T>()
             {
@@ -32,7 +32,8 @@ namespace InteractiveTerminalAPI.UI.Cursor
                 Counter = counter,
                 Func = func,
                 Active = active == null ? (_ => true) : active,
-                SelectInactive = selectInactive
+                SelectInactive = selectInactive,
+                ShowCounter = showCounter
             };
         }
 

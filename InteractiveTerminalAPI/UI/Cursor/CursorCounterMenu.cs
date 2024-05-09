@@ -6,17 +6,8 @@ using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {
-    public class CursorCounterMenu : BaseCursorMenu<CursorCounterElement>
+    public class CursorCounterMenu : BaseCursorCounterMenu<CursorCounterElement>
     {
-        public void IncrementCounter()
-        {
-            elements[cursorIndex].IncrementCounter();
-        }
-        public void DecrementCounter()
-        {
-            elements[cursorIndex].DecrementCounter();
-        }
-
         public override string GetText(int availableLength)
         {
             StringBuilder sb = new StringBuilder();

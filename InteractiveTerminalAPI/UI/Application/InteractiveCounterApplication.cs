@@ -6,7 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application
 {
-    public class InteractiveCounterApplication : BaseInteractiveApplication<CursorCounterMenu, CursorCounterElement>
+    public abstract class InteractiveCounterApplication<K,V> : BaseInteractiveApplication<K,V> where K : BaseCursorCounterMenu<V> where V : CursorCounterElement
     {
         protected override void AddInputBindings()
         {
@@ -35,23 +35,6 @@ namespace InteractiveTerminalAPI.UI.Application
         internal void OnApplicationCountDown(CallbackContext context)
         {
             DecrementSelectedCounter();
-        }
-        /// Example of initializing this application
-        public override void Initialization()
-        {
-            CursorOutputElement<string>[] cursorCounterElements = new CursorOutputElement<string>[10];
-            Func<int, string>[] functions = new Func<int, string>[10];
-            for(int i = 0; i < cursorCounterElements.Length; i++)
-            {
-                int count = i;
-                functions[i] = (x) => $"More Yippies{x}!";
-                cursorCounterElements[i] = CursorOutputElement<string>.Create(name: "Yippie" + i, counter: 0, func: functions[i], active: (x) => count % 2 == 0, selectInactive: true);
-            }
-            CursorCounterMenu cursorMenu = CursorCounterMenu.Create(0, '>', cursorCounterElements);
-            IScreen screen = BoxedOutputScreen<string, string>.Create("Yippie", [cursorMenu], input: () => cursorCounterElements[0].ApplyFunction() + cursorCounterElements[1].ApplyFunction(), output: (x) => x);
-
-            currentCursorMenu = cursorMenu;
-            currentScreen = screen;
         }
     }
 }
