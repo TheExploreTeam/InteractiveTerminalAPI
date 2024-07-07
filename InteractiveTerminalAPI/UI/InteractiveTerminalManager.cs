@@ -9,6 +9,7 @@ namespace InteractiveTerminalAPI.UI
     public class InteractiveTerminalManager : MonoBehaviour
     {
         internal static Dictionary<string, Func<TerminalApplication>> registeredApplications = new Dictionary<string, Func<TerminalApplication>>();
+        internal static Dictionary<string, bool> commandSensitive = new Dictionary<string, bool>();
         public static InteractiveTerminalManager Instance;
         TerminalApplication mainApplication;
         Terminal terminalReference;
@@ -25,12 +26,21 @@ namespace InteractiveTerminalAPI.UI
         internal void Initialize(string command)
         {
             Func<TerminalApplication> function = registeredApplications.GetValueOrDefault(command, null);
+            if (commandSensitive.ContainsKey(command.ToLower()))
+            {
+                foreach (string commandPrompt in registeredApplications.Keys)
+                    if (string.Equals(commandPrompt, command, StringComparison.OrdinalIgnoreCase))
+                    {
+                        function = registeredApplications[commandPrompt];
+                        break;
+                    }
+            }
             if (function == null)
             {
                 Plugin.mls.LogError("An application was not selected to change the terminal's text.");
                 return;
             }
-            mainApplication = registeredApplications.GetValueOrDefault(command, null).Invoke();
+            mainApplication = function.Invoke();
             if (mainApplication == null)
             {
                 Plugin.mls.LogError("The selected application doesn't have a valid constructor.");
@@ -80,7 +90,16 @@ namespace InteractiveTerminalAPI.UI
         }
         public static bool ContainsApplication(string command)
         {
-            return registeredApplications.ContainsKey(command);
+            if (!commandSensitive.ContainsKey(command.ToLower()))
+                return registeredApplications.ContainsKey(command);
+            else
+            {
+                foreach (string commandPrompt in registeredApplications.Keys)
+                {
+                    if (string.Equals(commandPrompt, command, StringComparison.OrdinalIgnoreCase)) return true;
+                }
+                return false;
+            }
         }
         public static void RegisterApplication<T>(string command) where T : TerminalApplication, new()
         {
@@ -91,10 +110,20 @@ namespace InteractiveTerminalAPI.UI
             }
             registeredApplications.Add(command, () => new T());
         }
+        public static void RegisterApplication<T>(string command, bool caseSensitive) where T : TerminalApplication, new()
+        {
+            RegisterApplication<T>(command);
+            commandSensitive.Add(command.ToLower(), caseSensitive);
+        }
         public static void RegisterApplication<T>(string[] commands) where T : TerminalApplication, new()
         {
             foreach (string command in commands)
                 RegisterApplication<T>(command);
+        }
+        public static void RegisterApplication<T>(string[] commands, bool caseSensitive) where T : TerminalApplication, new()
+        {
+            foreach (string command in commands)
+                RegisterApplication<T>(command, caseSensitive);
         }
     }
 }
