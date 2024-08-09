@@ -33,6 +33,7 @@ namespace InteractiveTerminalAPI.Patches.TerminalComponents
                 store.name = "InteractiveTerminal";
                 Object.Destroy(store.GetComponent<MeshRenderer>());
                 Object.Destroy(store.GetComponent<MeshFilter>());
+                Object.Destroy(store.GetComponent<BoxCollider>());
                 InteractiveTerminalManager component = store.AddComponent<InteractiveTerminalManager>();
                 component.Initialize(text);
                 __result = Util.TerminalNodeUtils.GetHelpTerminalNode();

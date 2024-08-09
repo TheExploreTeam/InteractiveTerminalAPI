@@ -8,7 +8,7 @@ namespace InteractiveTerminalAPI.UI.Page
 {
     public class PageCursorElement : PageElement
     {
-        internal CursorMenu[] cursorMenus;
+        public CursorMenu[] cursorMenus;
         public CursorMenu GetCurrentCursorMenu()
         {
             return cursorMenus[pageIndex];
