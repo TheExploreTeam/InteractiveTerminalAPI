@@ -38,7 +38,7 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             int cursorIndex = currentCursorMenu.cursorIndex;
             base.MoveCursorUp();
-            if (currentCursorMenu.cursorIndex > cursorIndex)
+            if (currentPage.GetCurrentCursorMenu() == currentCursorMenu && currentCursorMenu.cursorIndex > cursorIndex)
             {
                 ChangeScreenBackward();
                 base.MoveCursorUp();
@@ -48,7 +48,7 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             int cursorIndex = currentCursorMenu.cursorIndex;
             base.MoveCursorDown();
-            if (currentCursorMenu.cursorIndex < cursorIndex)
+            if (currentPage.GetCurrentCursorMenu() == currentCursorMenu && currentCursorMenu.cursorIndex < cursorIndex)
             {
                 ChangeScreenForward();
                 currentCursorMenu.cursorIndex = 0;
