@@ -57,11 +57,11 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             currentCursorMenu.ChangeSorting();
         }
-        public void MoveCursorUp()
+        public virtual void MoveCursorUp()
         {
             currentCursorMenu.Backward();
         }
-        public void MoveCursorDown()
+        public virtual void MoveCursorDown()
         {
             currentCursorMenu.Forward();
         }

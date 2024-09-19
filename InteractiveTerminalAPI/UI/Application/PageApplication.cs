@@ -34,6 +34,26 @@ namespace InteractiveTerminalAPI.UI.Application
         {
             currentPage.ChangeSorting();
         }
+        public override void MoveCursorUp()
+        {
+            int cursorIndex = currentCursorMenu.cursorIndex;
+            base.MoveCursorUp();
+            if (currentCursorMenu.cursorIndex > cursorIndex)
+            {
+                ChangeScreenBackward();
+                base.MoveCursorUp();
+            }
+        }
+        public override void MoveCursorDown()
+        {
+            int cursorIndex = currentCursorMenu.cursorIndex;
+            base.MoveCursorDown();
+            if (currentCursorMenu.cursorIndex < cursorIndex)
+            {
+                ChangeScreenForward();
+                currentCursorMenu.cursorIndex = 0;
+            }
+        }
         protected void ResetScreen()
         {
             SwitchScreen(initialPage, true);
