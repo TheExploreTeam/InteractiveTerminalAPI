@@ -3,8 +3,6 @@ using InteractiveTerminalAPI.Misc.Util;
 using InteractiveTerminalAPI.UI.Cursor;
 using InteractiveTerminalAPI.UI.Screen;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application

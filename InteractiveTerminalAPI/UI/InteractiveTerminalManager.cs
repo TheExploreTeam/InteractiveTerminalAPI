@@ -1,5 +1,6 @@
 ﻿using InteractiveTerminalAPI.Misc.Util;
 using InteractiveTerminalAPI.UI.Application;
+using InteractiveTerminalAPI.Util;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace InteractiveTerminalAPI.UI
         void Start()
         {
             Instance = this;
-            terminalReference = GameObject.Find("TerminalScript").GetComponent<Terminal>();
+            terminalReference = Tools.GetTerminal();
             lastTerminalNode = terminalReference.currentNode;
             UpdateInput(false);
         }

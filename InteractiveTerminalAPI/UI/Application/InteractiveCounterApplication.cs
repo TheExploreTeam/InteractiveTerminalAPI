@@ -1,7 +1,5 @@
 ﻿using InteractiveTerminalAPI.Input;
 using InteractiveTerminalAPI.UI.Cursor;
-using InteractiveTerminalAPI.UI.Screen;
-using System;
 using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application
