@@ -14,8 +14,11 @@ namespace InteractiveTerminalAPI.UI.Page
             IScreen selectedScreen = elements[pageIndex];
             StringBuilder sb = new StringBuilder();
             sb.Append(selectedScreen.GetText(availableLength));
-            sb.Append(new string(APIConstants.WHITE_SPACE, availableLength - APIConstants.START_PAGE_COUNTER))
-                .Append($"Page {pageIndex + 1}/{elements.Length}");
+            if (elements.Length > 1)
+            {
+                sb.Append(new string(APIConstants.WHITE_SPACE, availableLength - APIConstants.START_PAGE_COUNTER))
+                    .Append($"Page {pageIndex + 1}/{elements.Length}");
+            }
 
             return sb.ToString();
         }

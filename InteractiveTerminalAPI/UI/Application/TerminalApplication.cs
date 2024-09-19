@@ -28,16 +28,16 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         protected virtual void AddInputBindings()
         {
-            Keybinds.cursorExitAction.performed += OnUpgradeStoreCursorExit;
+            Keybinds.cursorExitAction.performed += OnScreenExit;
             terminal.playerActions.Movement.OpenMenu.performed -= terminal.PressESC;
         }
 
         protected virtual void RemoveInputBindings()
         {
-            Keybinds.cursorExitAction.performed -= OnUpgradeStoreCursorExit;
+            Keybinds.cursorExitAction.performed -= OnScreenExit;
             terminal.playerActions.Movement.OpenMenu.performed += terminal.PressESC;
         }
-        internal void OnUpgradeStoreCursorExit(CallbackContext context)
+        protected void OnScreenExit(CallbackContext context)
         {
             UnityEngine.Object.Destroy(InteractiveTerminalManager.Instance);
         }

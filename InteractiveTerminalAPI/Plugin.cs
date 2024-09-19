@@ -7,8 +7,6 @@ using InteractiveTerminalAPI.Compat;
 using InteractiveTerminalAPI.Patches.TerminalComponents;
 using InteractiveTerminalAPI.Misc;
 using InteractiveTerminalAPI.Input;
-using InteractiveTerminalAPI.UI;
-using InteractiveTerminalAPI.UI.Application;
 
 namespace InteractiveTerminalAPI
 {
