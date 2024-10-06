@@ -12,7 +12,7 @@ namespace InteractiveTerminalAPI.UI
         internal static Dictionary<string, Func<TerminalApplication>> registeredApplications = new Dictionary<string, Func<TerminalApplication>>();
         internal static Dictionary<string, bool> commandSensitive = new Dictionary<string, bool>();
         public static InteractiveTerminalManager Instance;
-        TerminalApplication mainApplication;
+        internal TerminalApplication mainApplication;
         Terminal terminalReference;
         TerminalNode lastTerminalNode;
         Color previousCaretColor;

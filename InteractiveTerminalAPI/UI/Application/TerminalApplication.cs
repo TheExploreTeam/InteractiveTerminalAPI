@@ -37,7 +37,7 @@ namespace InteractiveTerminalAPI.UI.Application
             Keybinds.cursorExitAction.performed -= OnScreenExit;
             terminal.playerActions.Movement.OpenMenu.performed += terminal.PressESC;
         }
-        protected void OnScreenExit(CallbackContext context)
+        public void OnScreenExit(CallbackContext context)
         {
             UnityEngine.Object.Destroy(InteractiveTerminalManager.Instance);
         }

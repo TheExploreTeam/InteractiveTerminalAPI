@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using InteractiveTerminalAPI.Misc.Util;
+using InteractiveTerminalAPI.UI.Hierarchy;
 using InteractiveTerminalAPI.Util;
 
 namespace InteractiveTerminalAPI.UI.Cursor
@@ -17,7 +18,10 @@ namespace InteractiveTerminalAPI.UI.Cursor
                 if (i == cursorIndex) sb.Append(cursorCharacter).Append(APIConstants.WHITE_SPACE); else sb.Append(APIConstants.WHITE_SPACE).Append(APIConstants.WHITE_SPACE);
                 string text = element.GetText(availableLength - 2);
                 string backgroundColor = element.Active(element) ? APIConstants.DEFAULT_BACKGROUND_SELECTED_COLOR : APIConstants.INACTIVE_BACKGROUND_SELECTED_COLOR;
-                text = i == cursorIndex ? string.Format(APIConstants.SELECTED_CURSOR_ELEMENT_FORMAT, backgroundColor, APIConstants.DEFAULT_TEXT_SELECTED_COLOR, text) : text;
+                if (!(element is BaseCursorHierarchyElement hierarchyElement && hierarchyElement.Selected))
+                {
+                    text = i == cursorIndex ? string.Format(APIConstants.SELECTED_CURSOR_ELEMENT_FORMAT, backgroundColor, APIConstants.DEFAULT_TEXT_SELECTED_COLOR, text) : text;
+                }
                 sb.Append(Tools.WrapText(text, availableLength, leftPadding: "  ", rightPadding: "", false));
             }
             return sb.ToString();

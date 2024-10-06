@@ -23,7 +23,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
             return sb.ToString();
         }
 
-        public void ExecuteAction()
+        public virtual void ExecuteAction()
         {
             if (Action != null) Action();
         }
