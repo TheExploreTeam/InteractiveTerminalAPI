@@ -48,6 +48,17 @@ namespace InteractiveTerminalAPI.Misc.Util
 
         #region LGU Store Interactive UI
 
+        #region Hierarchy Display
+
+        internal const char INTERSECTION = '├';
+        internal const char LAST_INTERSECTION = '└';
+        internal const char SPACING = '─';
+        internal const int SPACING_AMOUNT = 2;
+        internal const char VERTICAL_SPACING = '│';
+        internal const int VERTICAL_SPACING_AMOUNT = 1;
+
+        #endregion
+
         #region Cursor Display
         internal const char CURSOR = '>';
 
