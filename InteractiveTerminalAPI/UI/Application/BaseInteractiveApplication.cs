@@ -10,13 +10,15 @@ namespace InteractiveTerminalAPI.UI.Application
     public abstract class BaseInteractiveApplication<K,V> : TerminalApplication where K : BaseCursorMenu<V> where V : CursorElement
     {
         public K currentCursorMenu;
+        public K previousCursorMenu;
+        public IScreen previousScreen;
         protected override string GetApplicationText()
         {
             return currentScreen.GetText(APIConstants.AVAILABLE_CHARACTERS_PER_LINE);
         }
         protected override Action PreviousScreen()
         {
-            return () => SwitchScreen(currentScreen, currentCursorMenu, previous: true);
+            return () => SwitchScreen(previousScreen != null ? previousScreen : currentScreen, previousCursorMenu != null ? previousCursorMenu : currentCursorMenu, previous: true);
         }
 
         protected override void AddInputBindings()
@@ -69,6 +71,8 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         protected virtual void SwitchScreen(IScreen screen, K cursorMenu, bool previous)
         {
+            previousScreen = screen;
+            previousCursorMenu = currentCursorMenu;
             currentScreen = screen;
             currentCursorMenu = cursorMenu;
             if (!previous) cursorMenu.cursorIndex = 0;

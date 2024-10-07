@@ -12,6 +12,7 @@ namespace InteractiveTerminalAPI.UI.Application
     public abstract class PageApplication : InteractiveTerminalApplication
     {
         protected PageCursorElement initialPage;
+        protected PageCursorElement previousPage;
         protected PageCursorElement currentPage;
         protected override string GetApplicationText()
         {
@@ -23,7 +24,12 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         protected override Action PreviousScreen()
         {
-            return () => ResetScreen();
+            return () =>
+            {
+                if (previousPage != null)
+                    SwitchScreen(previousPage, previous: true);
+                else ResetScreen(); 
+            };
         }
 
         protected virtual int GetAmountPages<T>(T[] entries)
@@ -60,6 +66,7 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         protected void SwitchScreen(PageCursorElement pages, bool previous)
         {
+            previousPage = currentPage;
             currentPage = pages;
             SwitchScreen(currentPage.GetCurrentScreen(), currentPage.GetCurrentCursorMenu(), previous);
         }
