@@ -16,10 +16,10 @@ namespace InteractiveTerminalAPI.UI.Cursor
         {
             StringBuilder sb = new StringBuilder();
             if (!Active(this)) sb.Append(string.Format(APIConstants.COLOR_INITIAL_FORMAT, APIConstants.HEXADECIMAL_GREY));
-            sb.Append(Name);
-            if (Description != null & Description != "")
-                sb.AppendLine().Append(Tools.WrapText(Description, availableLength));
+            sb.Append(Name + "\n");
             if (!Active(this)) sb.Append(APIConstants.COLOR_FINAL_FORMAT);
+            if (Description != null && Description != "")
+                sb.Append(Tools.WrapText(Description, availableLength));
             return sb.ToString();
         }
 
