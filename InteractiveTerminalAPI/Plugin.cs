@@ -7,6 +7,8 @@ using InteractiveTerminalAPI.Compat;
 using InteractiveTerminalAPI.Patches.TerminalComponents;
 using InteractiveTerminalAPI.Misc;
 using InteractiveTerminalAPI.Input;
+using InteractiveTerminalAPI.UI;
+using InteractiveTerminalAPI.UI.Application;
 
 namespace InteractiveTerminalAPI
 {
@@ -21,11 +23,11 @@ namespace InteractiveTerminalAPI
 
         void Awake()
         {
-            //Config = new PluginConfig(base.Config);
-
             InputUtils_Compat.Init();
             PatchMainVersion();
-
+#if DEBUG
+            InteractiveTerminalManager.RegisterApplication<ExampleApplication>("hello", caseSensitive: true);
+#endif
             mls.LogInfo($"{Metadata.NAME} {Metadata.VERSION} has been loaded successfully.");
         }
         internal static void PatchMainVersion()
