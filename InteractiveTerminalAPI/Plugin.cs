@@ -2,7 +2,6 @@
 using BepInEx.Logging;
 using HarmonyLib;
 using System;
-using MoreShipUpgrades.Misc;
 using InteractiveTerminalAPI.Compat;
 using InteractiveTerminalAPI.Patches.TerminalComponents;
 using InteractiveTerminalAPI.Misc;
@@ -18,8 +17,6 @@ namespace InteractiveTerminalAPI
     {
         internal static readonly Harmony harmony = new(Metadata.GUID);
         internal static readonly ManualLogSource mls = BepInEx.Logging.Logger.CreateLogSource(Metadata.NAME);
-
-        public new static PluginConfig Config;
 
         void Awake()
         {

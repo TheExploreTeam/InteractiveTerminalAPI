@@ -38,6 +38,7 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         protected override void ChangeSorting()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentPage.ChangeSorting();
         }
         public override void MoveCursorUp()
@@ -86,11 +87,13 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         public void ChangeScreenForward()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentPage.PageUp();
             SwitchScreen(currentPage.GetCurrentScreen(), currentPage.GetCurrentCursorMenu(), false);
         }
         public void ChangeScreenBackward()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentPage.PageDown();
             SwitchScreen(currentPage.GetCurrentScreen(), currentPage.GetCurrentCursorMenu(), false);
         }

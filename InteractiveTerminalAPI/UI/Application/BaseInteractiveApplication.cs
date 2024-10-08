@@ -55,18 +55,22 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         protected virtual void ChangeSorting()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentCursorMenu.ChangeSorting();
         }
         public virtual void MoveCursorUp()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentCursorMenu.Backward();
         }
         public virtual void MoveCursorDown()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentCursorMenu.Forward();
         }
         public void Submit()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentCursorMenu.Execute();
         }
         protected virtual void SwitchScreen(IScreen screen, K cursorMenu, bool previous)

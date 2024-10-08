@@ -20,10 +20,12 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         void IncrementSelectedCounter()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentCursorMenu.IncrementCounter();
         }
         void DecrementSelectedCounter()
         {
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
             currentCursorMenu.DecrementCounter();
         }
         internal void OnApplicationCountUp(CallbackContext context)

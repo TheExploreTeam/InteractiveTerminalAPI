@@ -39,7 +39,8 @@ namespace InteractiveTerminalAPI.UI.Application
         }
         public void OnScreenExit(CallbackContext context)
         {
-            UnityEngine.Object.Destroy(InteractiveTerminalManager.Instance);
+            RoundManager.PlayRandomClip(terminal.terminalAudio, terminal.keyboardClips);
+            UnityEngine.Object.Destroy(InteractiveTerminalManager.Instance.gameObject);
         }
     }
 }
