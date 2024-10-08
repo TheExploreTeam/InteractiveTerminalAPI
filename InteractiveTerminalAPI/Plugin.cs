@@ -36,17 +36,9 @@ namespace InteractiveTerminalAPI
         }
         static void PatchVitalComponents()
         {
-            try
-            {
             harmony.PatchAll(typeof(Keybinds));
             harmony.PatchAll(typeof(TerminalPatcher));
             mls.LogInfo("Game managers have been patched");
-            }
-            catch (Exception exception)
-            {
-                mls.LogError("An error has occurred patching the game managers...");
-                mls.LogError(exception);
-            }
         }
     }   
 }
