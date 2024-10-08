@@ -79,7 +79,12 @@ namespace InteractiveTerminalAPI.UI.Application
             previousCursorMenu = currentCursorMenu;
             currentScreen = screen;
             currentCursorMenu = cursorMenu;
-            if (!previous) cursorMenu.cursorIndex = 0;
+            if (!previous)
+            {
+                cursorMenu.cursorIndex = 0;
+                if (!cursorMenu.IsCurrentElementSelectable())
+                    cursorMenu.Forward();
+            }
         }
     }
 }

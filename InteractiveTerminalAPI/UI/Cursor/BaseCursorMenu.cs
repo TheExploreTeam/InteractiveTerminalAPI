@@ -27,7 +27,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
         public void Forward()
         {
             cursorIndex = (cursorIndex + 1) % elements.Length;
-            while (elements[cursorIndex] == null || (!elements[cursorIndex].Active(elements[cursorIndex]) && !elements[cursorIndex].SelectInactive))
+            while (!IsCurrentElementSelectable())
             {
                 cursorIndex = (cursorIndex + 1) % elements.Length;
             }
@@ -37,11 +37,16 @@ namespace InteractiveTerminalAPI.UI.Cursor
         {
             cursorIndex--;
             if (cursorIndex < 0) cursorIndex = elements.Length - 1;
-            while (elements[cursorIndex] == null || (!elements[cursorIndex].Active(elements[cursorIndex]) && !elements[cursorIndex].SelectInactive))
+            while (!IsCurrentElementSelectable())
             {
                 cursorIndex--;
                 if (cursorIndex < 0) cursorIndex = elements.Length - 1;
             }
+        }
+
+        public bool IsCurrentElementSelectable()
+        {
+            return elements[cursorIndex] != null && (elements[cursorIndex].Active(elements[cursorIndex]) || elements[cursorIndex].SelectInactive);
         }
 
         public void ResetCursor()
