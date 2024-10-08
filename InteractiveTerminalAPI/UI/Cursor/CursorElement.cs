@@ -19,7 +19,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
             sb.Append(Name);
             if (!Active(this)) sb.Append(APIConstants.COLOR_FINAL_FORMAT);
             if (!string.IsNullOrEmpty(Description))
-                sb.Append("\n" + Tools.WrapText(Description, availableLength));
+                sb.Append("\n" + Description);
             return sb.ToString();
         }
 

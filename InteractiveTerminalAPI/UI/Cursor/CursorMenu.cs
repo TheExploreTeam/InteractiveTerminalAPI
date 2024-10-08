@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using BepInEx;
 using InteractiveTerminalAPI.Misc.Util;
 using InteractiveTerminalAPI.UI.Hierarchy;
 using InteractiveTerminalAPI.Util;
@@ -17,12 +18,14 @@ namespace InteractiveTerminalAPI.UI.Cursor
                 if (element == null) continue;
                 if (i == cursorIndex) sb.Append(cursorCharacter).Append(APIConstants.WHITE_SPACE); else sb.Append(APIConstants.WHITE_SPACE).Append(APIConstants.WHITE_SPACE);
                 string text = element.GetText(availableLength - 2);
+                string title = !string.IsNullOrEmpty(element.Name) ? text.Substring(0, element.Name.Length) : text;
+                string description = !string.IsNullOrEmpty(element.Description) ? text.Substring(element.Name.Length, text.Length - element.Name.Length) : "";
                 string backgroundColor = element.Active(element) ? APIConstants.DEFAULT_BACKGROUND_SELECTED_COLOR : APIConstants.INACTIVE_BACKGROUND_SELECTED_COLOR;
                 if (!(element is BaseCursorHierarchyElement hierarchyElement && hierarchyElement.Selected))
                 {
-                    text = i == cursorIndex ? string.Format(APIConstants.SELECTED_CURSOR_ELEMENT_FORMAT, backgroundColor, APIConstants.DEFAULT_TEXT_SELECTED_COLOR, text) : text;
+                    text = i == cursorIndex ? string.Format(APIConstants.SELECTED_CURSOR_ELEMENT_FORMAT, backgroundColor, APIConstants.DEFAULT_TEXT_SELECTED_COLOR, title) + description : text;
                 }
-                sb.Append(Tools.WrapText(text, availableLength, leftPadding: "  ", rightPadding: "", false));
+                sb.Append(Tools.WrapText(text, availableLength-2, leftPadding: "  ", rightPadding: "", false));
             }
             return sb.ToString();
         }
