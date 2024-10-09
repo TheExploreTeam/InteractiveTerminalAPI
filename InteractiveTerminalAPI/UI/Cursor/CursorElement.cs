@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using InteractiveTerminalAPI.Misc.Util;
-using InteractiveTerminalAPI.Util;
 
 namespace InteractiveTerminalAPI.UI.Cursor
 {

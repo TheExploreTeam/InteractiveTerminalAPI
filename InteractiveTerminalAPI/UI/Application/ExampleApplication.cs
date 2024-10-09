@@ -1,4 +1,6 @@
-﻿using InteractiveTerminalAPI.UI.Cursor;
+﻿
+#if DEBUG
+using InteractiveTerminalAPI.UI.Cursor;
 using InteractiveTerminalAPI.UI.Hierarchy;
 using InteractiveTerminalAPI.UI.Screen;
 using System;
@@ -7,7 +9,6 @@ using System.Text;
 
 namespace InteractiveTerminalAPI.UI.Application
 {
-#if DEBUG
     internal class ExampleApplication : InteractiveTerminalApplication
     {
         public override void Initialization()
@@ -69,5 +70,5 @@ namespace InteractiveTerminalAPI.UI.Application
             currentScreen = screen; // To tell the application which screen to display
         }
     }
-#endif
 }
+#endif

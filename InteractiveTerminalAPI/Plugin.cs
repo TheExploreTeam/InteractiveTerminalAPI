@@ -1,17 +1,18 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using System;
 using InteractiveTerminalAPI.Compat;
 using InteractiveTerminalAPI.Patches.TerminalComponents;
 using InteractiveTerminalAPI.Misc;
 using InteractiveTerminalAPI.Input;
+#if DEBUG
 using InteractiveTerminalAPI.UI;
 using InteractiveTerminalAPI.UI.Application;
+#endif
 
 namespace InteractiveTerminalAPI
 {
-    [BepInEx.BepInPlugin(Metadata.GUID,Metadata.NAME,Metadata.VERSION)]
+    [BepInPlugin(Metadata.GUID,Metadata.NAME,Metadata.VERSION)]
     [BepInDependency("com.rune580.LethalCompanyInputUtils")]
     public class Plugin : BaseUnityPlugin
     {
@@ -37,5 +38,5 @@ namespace InteractiveTerminalAPI
             harmony.PatchAll(typeof(TerminalPatcher));
             mls.LogInfo("Game managers have been patched");
         }
-    }   
+    }
 }

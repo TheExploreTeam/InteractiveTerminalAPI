@@ -2,7 +2,6 @@
 using InteractiveTerminalAPI.UI.Screen;
 using InteractiveTerminalAPI.Util;
 using System;
-using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
 namespace InteractiveTerminalAPI.UI.Application

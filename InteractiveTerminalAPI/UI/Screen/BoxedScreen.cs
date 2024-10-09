@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using InteractiveTerminalAPI.Misc.Util;
-using InteractiveTerminalAPI.UI;
 using InteractiveTerminalAPI.Util;
 
 namespace InteractiveTerminalAPI.UI.Screen

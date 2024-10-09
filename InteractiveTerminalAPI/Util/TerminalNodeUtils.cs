@@ -10,20 +10,16 @@ namespace InteractiveTerminalAPI.Util
     /// </summary>
     internal static class TerminalNodeUtils
     {
-        static Terminal terminal;
         /// <summary>
         /// Dictionary used as cache to optimize unnecessary searches when already found the reference.
         /// </summary>
         static readonly Dictionary<string, TerminalNode> retrievedTerminalNodes = new Dictionary<string, TerminalNode>();
 
         const string HELP_NOUN = "help";
+#if DEBUG
         const string INFO_VERB = "info";
         const string SHOVEL_NOUN = "shovel";
-        public static Terminal GetTerminal()
-        {
-            if (terminal == null) terminal = GameObject.Find("TerminalScript").GetComponent<Terminal>();
-            return terminal;
-        }
+#endif
         /// <summary>
         /// Finds the associated TerminalKeyword stored in the terminal which has the requested word
         /// </summary>
@@ -31,10 +27,11 @@ namespace InteractiveTerminalAPI.Util
         /// <returns>Associated keyword if it's stored in the terminal, null if it doesn't exist</returns>
         internal static TerminalKeyword FindTerminalKeyword(string word)
         {
-            TerminalKeyword terminalKeyword = GetTerminal().CheckForExactSentences(word);
+            TerminalKeyword terminalKeyword = Tools.GetTerminal().CheckForExactSentences(word);
             if (terminalKeyword == null) Plugin.mls.LogError($"Couldn't find terminal node for the word \"{word}\"");
             return terminalKeyword;
         }
+#if DEBUG
         /// <summary>
         /// Retrieves the TerminalNode used to display info of the requested item designated through the given word
         /// </summary>
@@ -44,7 +41,7 @@ namespace InteractiveTerminalAPI.Util
         {
             TerminalNode result = retrievedTerminalNodes.GetValueOrDefault(word, null);
             if (result != null) return result;
-            TerminalKeyword infoKeyword = GetTerminal().ParseWord(INFO_VERB);
+            TerminalKeyword infoKeyword = Tools.GetTerminal().ParseWord(INFO_VERB);
             for (int i = 0; i < infoKeyword.compatibleNouns.Length && result == null; i++)
             {
                 if (infoKeyword.compatibleNouns[i].noun.word != word) continue;
@@ -54,6 +51,7 @@ namespace InteractiveTerminalAPI.Util
             if (!retrievedTerminalNodes.ContainsKey(word)) retrievedTerminalNodes[word] = result;
             return result;
         }
+#endif
         /// <summary>
         /// Retrieves the TerminalNode associated with provided special keyword
         /// </summary>
@@ -67,6 +65,7 @@ namespace InteractiveTerminalAPI.Util
             if (!retrievedTerminalNodes.ContainsKey(word)) retrievedTerminalNodes[word] = result;
             return result;
         }
+#if DEBUG
         /// <summary>
         /// Adds or remove additional text from the given terminal node if a given feature is enabled or not
         /// </summary>
@@ -88,6 +87,7 @@ namespace InteractiveTerminalAPI.Util
                 node.displayText = text;
             }
         }
+#endif
         /// <summary>
         /// 
         /// </summary>
@@ -96,6 +96,7 @@ namespace InteractiveTerminalAPI.Util
         {
             return GetSpecialTerminalNodeByWord(HELP_NOUN);
         }
+#if DEBUG
         /// <summary>
         /// 
         /// </summary>
@@ -104,5 +105,6 @@ namespace InteractiveTerminalAPI.Util
         {
             return GetItemInfoTerminalNode(SHOVEL_NOUN);
         }
+#endif
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using BepInEx;
 using InteractiveTerminalAPI.Misc.Util;
 using InteractiveTerminalAPI.UI.Hierarchy;
 using InteractiveTerminalAPI.Util;
@@ -18,7 +17,7 @@ namespace InteractiveTerminalAPI.UI.Cursor
                 if (element == null) continue;
                 if (i == cursorIndex) sb.Append(cursorCharacter).Append(APIConstants.WHITE_SPACE); else sb.Append(APIConstants.WHITE_SPACE).Append(APIConstants.WHITE_SPACE);
                 string text = element.GetText(availableLength - 2);
-                string title = !string.IsNullOrEmpty(element.Name) ? text.Substring(0, element.Name.Length) : text;
+                string title = !string.IsNullOrEmpty(element.Name) ? text.Split('\n')[0] : text;
                 string description = !string.IsNullOrEmpty(element.Description) ? text.Substring(element.Name.Length, text.Length - element.Name.Length) : "";
                 string backgroundColor = element.Active(element) ? APIConstants.DEFAULT_BACKGROUND_SELECTED_COLOR : APIConstants.INACTIVE_BACKGROUND_SELECTED_COLOR;
                 if (!(element is BaseCursorHierarchyElement hierarchyElement && hierarchyElement.Selected))
