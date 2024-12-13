@@ -17,7 +17,7 @@ namespace InteractiveTerminalAPI.UI.Page
             if (elements.Length > 1)
             {
                 sb.Append(new string(APIConstants.WHITE_SPACE, availableLength - APIConstants.START_PAGE_COUNTER))
-                    .Append($"Page {pageIndex + 1}/{elements.Length}");
+                    .Append($"页面:{pageIndex + 1}/{elements.Length}");
             }
 
             return sb.ToString();
