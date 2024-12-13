@@ -70,10 +70,10 @@ namespace InteractiveTerminalAPI.Misc.Util
         internal const string DEFAULT_TEXT_SELECTED_COLOR = HEXADECIMAL_WHITE + "FF";
         internal const string DEFAULT_DEACTIVATED_TEXT_COLOUR = HEXADECIMAL_GREY + "55";
 
-        internal const string GO_BACK_PROMPT = "Back";
+        internal const string GO_BACK_PROMPT = "返回";
 
-        internal const string CONFIRM_PROMPT = "Confirm";
-        internal const string CANCEL_PROMPT = "Abort";
+        internal const string CONFIRM_PROMPT = "确认";
+        internal const string CANCEL_PROMPT = "终止";
         #endregion
 
         #region Screen Display
